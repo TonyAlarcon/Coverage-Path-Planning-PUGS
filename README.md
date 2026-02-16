@@ -10,8 +10,6 @@ Accepted to *IEEE International Conference on Robotics and Automation (ICRA) 202
 
 Preprint: https://doi.org/10.48550/arXiv.2505.08060
 
-## Citation
-
 If you use this code in your research, please cite:
 
 ```bibtex
