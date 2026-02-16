@@ -1,7 +1,29 @@
-# CPP via Uniaxial Feasible, Gap-Severity Guided Decomposition
+# CPP via Uniaxial-Feasible, Gap-Severity Guided Decomposition
 
+[![arXiv](https://img.shields.io/badge/arXiv-2505.08060-b31b1b.svg)](https://doi.org/10.48550/arXiv.2505.08060)
 
-This repository provides a reference implementation for our CPP decomposition strategy, including dual-axis monotonic cuts guided by discontinuity severity.
+Reference implementation for:
+
+**Coverage Path Planning for Holonomic UAVs via Uniaxial-Feasible, Gap-Severity Guided Decomposition**  
+Accepted to *IEEE International Conference on Robotics and Automation (ICRA) 2026*.
+
+Preprint: https://doi.org/10.48550/arXiv.2505.08060
+
+## Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@misc{granadeno2025coveragepathplanningholonomic,
+  title        = {Coverage Path Planning for Holonomic UAVs via Uniaxial-Feasible, Gap-Severity Guided Decomposition},
+  author       = {Pedro Antonio Alarcon Granadeno and Jane Cleland-Huang},
+  year         = {2025},
+  eprint       = {2505.08060},
+  archivePrefix= {arXiv},
+  primaryClass = {cs.RO},
+  url          = {https://arxiv.org/abs/2505.08060}
+}
+```
 
 ##  Install
 
