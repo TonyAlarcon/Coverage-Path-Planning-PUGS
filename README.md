@@ -10,13 +10,6 @@ Accepted to *IEEE International Conference on Robotics and Automation (ICRA) 202
 
 Preprint: https://doi.org/10.48550/arXiv.2505.08060
 
-
-
-https://github.com/user-attachments/assets/e2f658d0-9b68-4855-bf80-8ae3cab127f8
-
-
-
-
 ## Citation
 
 If you use this code in your research, please cite:
@@ -32,6 +25,12 @@ If you use this code in your research, please cite:
   url          = {https://arxiv.org/abs/2505.08060}
 }
 ```
+https://github.com/user-attachments/assets/e2f658d0-9b68-4855-bf80-8ae3cab127f8
+
+
+
+
+
 
 ##  Install
 
