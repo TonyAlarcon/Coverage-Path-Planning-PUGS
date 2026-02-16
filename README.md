@@ -1,6 +1,7 @@
 # CPP via Uniaxial-Feasible, Gap-Severity Guided Decomposition
 
 [![arXiv](https://img.shields.io/badge/arXiv-2505.08060-b31b1b.svg)](https://doi.org/10.48550/arXiv.2505.08060)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Reference implementation for:
 
