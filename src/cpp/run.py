@@ -1,4 +1,4 @@
-from cpp.global_optimizer import held_karp
+from cpp.global_optimizer import held_karp, nn_global_connector
 from cpp.decomposition import greedy_partition, merge_partitions
 from cpp.parallel_track import ParallelTrackSweepCartesian
 from cpp.picklestore import PickleDecompStore
@@ -12,6 +12,7 @@ import os
 import argparse
  
 TOL = 1
+GLOBAL_OPT_PARTITION_THRESHOLD = 13  # if len(merged_partitions) > threshold, use NN
 
 def run_pipeline(poly, save_path = None, store=None):
     
@@ -36,7 +37,19 @@ def run_pipeline(poly, save_path = None, store=None):
         path_options.append(candidate_opts)
 
 
-    best_cost, best_path = held_karp(path_options)
+    merged_partition_count = len(merged_partitions)
+    if merged_partition_count > GLOBAL_OPT_PARTITION_THRESHOLD:
+        optimizer_name = "nn_global_connector"
+        optimizer_fn = nn_global_connector
+    else:
+        optimizer_name = "held_karp"
+        optimizer_fn = held_karp
+
+    print(
+        f"Global optimizer: {optimizer_name} "
+        f"(merged_partitions={merged_partition_count}, threshold={GLOBAL_OPT_PARTITION_THRESHOLD})"
+    )
+    best_cost, best_path = optimizer_fn(path_options)
     print("Best global cost:", best_cost)
     
     

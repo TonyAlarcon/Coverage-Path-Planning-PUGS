@@ -71,3 +71,58 @@ def held_karp(candidate_options: Sequence[Sequence[CandidateOption]]):
                 overall_path = [(i, cand_idx)] + path_rest
 
     return overall_best, overall_path
+
+
+def connection_cost(p_exit, q_entry) -> float:
+    """Euclidean cost between exit of previous candidate and entry of next."""
+    return math.hypot(p_exit[0] - q_entry[0], p_exit[1] - q_entry[1])
+
+def nn_global_connector(candidate_options: Sequence[Sequence[CandidateOption]]):
+    """
+    Approximate connector for large N:
+    - candidate_options: list of partitions, each a list of CandidateOption.
+    - returns (best_total_cost, best_ordering), where ordering is
+      [(partition_index, candidate_index), ...]
+    """
+    candidate_options = adjust_candidate_options(candidate_options, penalty=1)
+
+    N = len(candidate_options)
+    best_total_cost = float("inf")
+    best_ordering = None
+
+    for start in range(N):
+        for start_cand_idx, start_cand in enumerate(candidate_options[start]):
+            visited = {start}
+            ordering = [(start, start_cand_idx)]
+            total_cost = start_cand.cost
+            current_exit = start_cand.exit
+
+            while len(visited) < N:
+                best_next_cost = float("inf")
+                best_next = None
+
+                for j in range(N):
+                    if j in visited:
+                        continue
+
+                    for j_cand_idx, j_cand in enumerate(candidate_options[j]):
+                        cost_candidate = (
+                            connection_cost(current_exit, j_cand.entry) + j_cand.cost
+                        )
+                        if cost_candidate < best_next_cost:
+                            best_next_cost = cost_candidate
+                            best_next = (j, j_cand_idx, j_cand.exit)
+
+                if best_next is None:
+                    break  # shouldn't happen unless input is weird
+
+                ordering.append((best_next[0], best_next[1]))
+                total_cost += best_next_cost
+                current_exit = best_next[2]
+                visited.add(best_next[0])
+
+            if len(visited) == N and total_cost < best_total_cost:
+                best_total_cost = total_cost
+                best_ordering = ordering
+
+    return best_total_cost, best_ordering
