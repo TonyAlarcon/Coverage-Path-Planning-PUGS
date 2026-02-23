@@ -12,7 +12,7 @@ import os
 import argparse
  
 TOL = 1
-GLOBAL_OPT_PARTITION_THRESHOLD = 13  # if len(merged_partitions) > threshold, use NN
+GLOBAL_OPT_PARTITION_THRESHOLD = 15  # if len(merged_partitions) > threshold, use NN
 
 def run_pipeline(poly, save_path = None, store=None):
     
